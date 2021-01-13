@@ -6,11 +6,22 @@
 
 
 {% if user.is_authenticated %}
-    Hi {{ user.username }}!
+    Hi {{ user.first_name }} {{ user.last_name }}!
+    {% for ass in backends.associated %}
+        {{ass.provider}}
+    {% endfor %}
     <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
     <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Log In</a> |
-    <a href="{% url 'signup' %}">Sign Up</a>
+    <ul>
+        <li><a href="{% url 'login' %}">Log In</a></li>
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        <li><a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a></li>
+        <li><a class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a></li>
+        <li><a class="btn btn-primary" href="{% url 'social:begin' 'vk-oauth2' %}">Login with VKontakte</a></li>
+        
+    </ul>
+        
+
 {% endif %}
 {% endblock content %}
