@@ -1,8 +1,14 @@
 from pathlib import Path
 import os
-BASE_DIR = Path(__file__).resolve().parent.parent
+import dotenv
 
-SECRET_KEY = '*8^ohcer$$)^3d^k$3k*$ap#uo9=pp^2&+=)m(l3&b0m634(o0'
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -100,12 +106,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 AUTH_USER_MODEL = 'user.CustomUser'
 
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '456573632790-7ihhpj9lkjg1juu7tktvh38ak4cf90l4.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '5zbJGpqDvmOSzXxbQZlEncmE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1325568441138277'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c0abb50aef7495ef00198972ffb40181'
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('SOCIAL_AUTH_FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, name, email, picture.type(large), link'
@@ -117,8 +123,8 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'profile_url'),
 ]
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '7727582'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'LRsKaDynX9GLyTtoViL4'
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 LOGIN_URL = 'login'
