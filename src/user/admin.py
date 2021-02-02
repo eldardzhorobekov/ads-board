@@ -11,7 +11,14 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    # list_display = ['email', 'username',]
+    list_display = ['id', 'email', 'phone_number']
+    ordering = ('email',)
+    exclude = ('username', )
+    fieldsets = (
+        ('Personal info', {'fields': ('email', 'phone_number', 'password')}),
+        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+    )
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
