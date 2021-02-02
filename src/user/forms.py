@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
-
 from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext_lazy as _
 from .helpers import *
+
+
 User = get_user_model()
 
 class CustomUserCreationForm(UserCreationForm):
-
     def clean_email(self):
         email = self.cleaned_data['email']
         if email is None:
@@ -31,6 +32,10 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('email', 'phone_number', 'password1', 'password2')
+        labels = {
+            'email': 'Email',
+            'phone_number': 'Номер телефона'
+        }
 
 
 class CustomUserChangeForm(UserChangeForm):

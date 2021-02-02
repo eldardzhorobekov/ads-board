@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -107,7 +107,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic') # temporary
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
