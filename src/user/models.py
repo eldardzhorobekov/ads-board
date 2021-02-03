@@ -5,10 +5,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 from user.managers import CustomUserManager
+from django.core.exceptions import ValidationError
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True, blank=True, default=None, null=True)
-    phone_number = PhoneNumberField(_('phone'), blank=True, unique=True, null=True, default=None)
+    phone_number = PhoneNumberField(_('phone'), unique=True, blank=True, default=None, null=True)
     first_name = models.CharField(
         _('first name'),
         max_length=30,
@@ -45,3 +46,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     objects = CustomUserManager()
+
+    def clean(self):
+        if not self.email and not self.phone_number:
+            raise ValidationError('You must provide either Email or Phone number')

@@ -9,7 +9,7 @@ User = get_user_model()
 
 class CustomUserCreationForm(UserCreationForm):
     def clean_email(self):
-        email = self.cleaned_data['email']
+        email = self.cleaned_data.get('email')
         if email is None:
             return email
         number_occurrences = User.objects.filter(email__iexact=email).count()
@@ -18,14 +18,16 @@ class CustomUserCreationForm(UserCreationForm):
         return email
     
     def clean_phone_number(self):
-        if self.cleaned_data['phone_number'] == "":
+        phone_number = self.cleaned_data.get('phone_number')
+        if phone_number is None:
             return None
-        else:
-            return self.cleaned_data['phone_number']
+        number_occurrences = User.objects.filter(phone_number=phone_number).count()
+        if  number_occurrences > 0:
+            raise forms.ValidationError("This phone number is already taken by another user")
+        return phone_number
 
     def clean(self):
-        if self.cleaned_data['email'] is None and \
-            self.cleaned_data['phone_number'] is None:
+        if self.cleaned_data.get('email') is None and self.cleaned_data.get('phone_number') is None:
             raise forms.ValidationError("Either email or phone number must be set")
         return self.cleaned_data
     

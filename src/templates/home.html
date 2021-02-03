@@ -4,27 +4,12 @@
 
 {% block content %}
 
-<header class="header">
+
+
+<div class="main-nav">
     <div class="container">
-        <a class="header__logo" href="{% url 'home' %}">Ads board</a>
-        <nav class="header__navbar">
-            <ul>
-                {% if user.is_authenticated %}
-                    <li>
-                        {% if user.email %}
-                            {{ user.email }}
-                        {% else %}
-                            {{ user.username }}
-                        {% endif %}
-                    </li>
-                    <li><a href="{% url 'logout' %}">Выйти</a></li>
-                 {% else %}
-                    <li><a href="{% url 'custom_user:login' %}">Войти</a></li> /
-                    <li><a href="{% url 'custom_user:signup' %}">Регистрация</a></li>
-                    
-                {% endif %}
-            </ul>
-        </nav>
+        {% include 'ad/_categories.html' %}
     </div>
-</header>
+</div>
+
 {% endblock content %}

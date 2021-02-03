@@ -10,9 +10,32 @@
     {% block styles %} {% endblock %}
 </head>
 <body>
-    <main>
+    <header class="header">
+        <div class="container">
+            <a class="header__logo" href="{% url 'ads:home' %}">Ads board</a>
+            <nav class="header__navbar">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            {% if user.email %}
+                                {{ user.email }}
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </li>
+                        <li><a href="{% url 'logout' %}">Выйти</a></li>
+                     {% else %}
+                        <li><a href="{% url 'custom_user:login' %}">Войти</a></li> /
+                        <li><a href="{% url 'custom_user:signup' %}">Регистрация</a></li>
+                        
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
         {% block content %}
         {% endblock content %}
-    </main>
+    </div>
 </body>
 </html>

@@ -4,7 +4,8 @@
 
 {% block form %}
     <h2>Войти / <a href="{% url 'custom_user:signup' %}">Регистрация</a></h2>
-    <form>
+    {% include 'registration/social.html' %}
+    <form method="post">
         {% csrf_token %}
         {% for field in form %}
         <p>
