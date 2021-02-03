@@ -25,8 +25,10 @@ INSTALLED_APPS = [
     # 'oauth2_provider',
     'social_django',
     'phonenumber_field',
+    'mptt',
 
     'user.apps.UserConfig',
+    'ad.apps.AdConfig'
 ]
 
 MIDDLEWARE = [
