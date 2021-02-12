@@ -6,8 +6,8 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('user.urls')),
-    path('auth/', include('django.contrib.auth.urls'), name='django-auth'),
+    path('account/', include('user.urls')),
+    path('account/', include('django.contrib.auth.urls'), name='django-auth'),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('', include('ad.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

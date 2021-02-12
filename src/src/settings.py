@@ -26,9 +26,11 @@ INSTALLED_APPS = [
     'social_django',
     'phonenumber_field',
     'mptt',
+    'django_cleanup',
+    'crispy_forms',
 
     'user.apps.UserConfig',
-    'ad.apps.AdConfig'
+    'ad.apps.AdConfig',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +117,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 AUTH_USER_MODEL = 'user.CustomUser'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
@@ -138,7 +144,7 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
 SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'custom_user:login'
+LOGIN_REDIRECT_URL = 'ads:home'
 LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'ads:home'

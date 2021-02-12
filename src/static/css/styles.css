@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+p {
+    margin: 0 0 10px 0;
+}
 body {
     font-family: 'Ubuntu', sans-serif;
     white-space: nowrap;
@@ -10,7 +14,6 @@ body {
 
 .container {
     width: 100%;
-    height: 60px;
 }
 
 .header .container {
@@ -25,10 +28,10 @@ body {
     font-weight: 600;
     text-decoration: none;
 }
-.header__navbar ul{
+.header__navbar ul li{
     display: flex;
+    padding-left: 10px;
 }
-
 @media only screen and (min-width: 768px) {
     .container {
         width: 768px;
@@ -139,4 +142,125 @@ body {
 }
 .subcategories ul li a:hover {
     background: rgba(149, 165, 166,.3);
+}
+
+.ads-form-wrapper {
+    padding: 20px 0;
+}
+.image-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.image-form {
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+.image-form-container .image-form input[type="file"],
+.image-form-container .image-form input[type="checkbox"],
+.image-form-container .image-form label,
+.image-form-container .image-form:nth-last-child(2) {
+    display: none;
+}
+
+.image-form img {
+    cursor: pointer;
+    display: block;
+}
+#addImageBtn {
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: #fff;
+    font-size: 42px;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 2px;
+    outline: none;
+}
+#addImageBtn:hover {
+    background: rgba(236, 240, 241,.7);
+}
+#addImageBtn:active {
+    background: rgba(236, 240, 241,1.0);
+}
+
+#addImageInput {
+    display: none;
+}
+#addImageBtn span {
+    font-size: 36px;
+    color: #000;
+}
+#updateBtn {
+    padding: 8px 16px;
+    border: 1px solid #3498db;
+    border-radius: ;
+    background: #3498db;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.ad {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.image-form {
+    position: relative;
+    margin-bottom: 5px;
+}
+.image-form .delete-image-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    opacity: 0;
+}
+.image-form .delete-image-btn:hover {
+    opacity: 1;
+}
+.image-form:hover .delete-image-btn {
+    opacity: 0.85;
+}
+.ads-form-fields .control-group {
+    display: flex;
+    justify-content: flex-start;;
+    padding: 12px 0;
+}
+.ads-form-fields .control-group label{
+    flex-basis: 30%!important;
+    color: #5C5C5C;
+}
+.ads-form-fields .control-group .controls {
+    width: 100%;
+}
+.ads-form-fields .control-group .controls input:not([type="checkbox"]),
+.ads-form-fields .control-group .controls select,
+.ads-form-fields .control-group .controls textarea {
+    width: 100%;
+    padding: 3px 0 3px 5px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box; 
+    box-sizing:content-box;
 }

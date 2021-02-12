@@ -35,7 +35,7 @@ class CustomUserTest(TestCase):
     def test_signup_page(self):
         response = self.client.get(reverse('custom_user:signup'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='registration/signup.html')
+        self.assertTemplateUsed(response, template_name='account/signup.html')
 
     def test_signup_form_with_email(self):
         response = self.client.post(reverse('custom_user:signup'), data={
@@ -98,7 +98,7 @@ class CustomUserTest(TestCase):
     def test_login_page(self):
         response = self.client.get(reverse('custom_user:login'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='registration/login.html')
+        self.assertTemplateUsed(response, template_name='account/login.html')
 
     def test_login_form_with_email(self):
         user = User(email=self.email, password=self.password)

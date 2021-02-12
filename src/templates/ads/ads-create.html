@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Создать объявление - {{ advertisement }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Создать</h2>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form | crispy }}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="image-form">
+                {{ form }}
+            </div>
+        {% endfor %}
+        <a href="#" id="addImageBtn">Add New Image</a>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

@@ -3,7 +3,7 @@
 <html>
     <head>
     <meta charset="utf-8">
-    <title>Бесплатные объявления</title>
+    <title>{% block title %}Бесплатные объявления{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}" >
@@ -16,18 +16,13 @@
             <nav class="header__navbar">
                 <ul>
                     {% if user.is_authenticated %}
-                        <li>
-                            {% if user.email %}
-                                {{ user.email }}
-                            {% else %}
-                                {{ user.username }}
-                            {% endif %}
-                        </li>
+                        <li><a href="">{{ user }}</a></li>
+                        <li><a href="{% url 'ads:ads-create' %}">Создать объявление</a></li>
+                        <li><a href="{% url 'ads:ads-user-list' %}">Мои объявления</a></li>
                         <li><a href="{% url 'logout' %}">Выйти</a></li>
                      {% else %}
                         <li><a href="{% url 'custom_user:login' %}">Войти</a></li> /
                         <li><a href="{% url 'custom_user:signup' %}">Регистрация</a></li>
-                        
                     {% endif %}
                 </ul>
             </nav>
@@ -37,5 +32,8 @@
         {% block content %}
         {% endblock content %}
     </div>
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
 </body>
 </html>

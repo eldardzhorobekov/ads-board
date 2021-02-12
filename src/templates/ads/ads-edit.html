@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Редактировать объявление - {{ advertisement }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="ads-form-wrapper">
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            <h2>Редактировать</h2>
+            <div class="ads-form-fields">
+                <div class="control-group">
+                    <label id="formset-title">Фотографии: </label>
+                    <div class="image-form-container" id="image-formset">
+                        {{ formset.management_form }}
+                        {% for form in formset %}
+                            <div class="image-form">
+                                {{ form }}
+                            </div>
+                        {% endfor %}
+                        <button id="addImageBtn"><i class="fas fa-camera"></i></button>
+                    </div>
+                </div>
+                {{ form | crispy}}
+            </div>
+            <input id="updateBtn" type="submit" value="Опубликовать">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

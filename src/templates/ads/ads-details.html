@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактировать объявление - {{ ad.id }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p>Category: {{ ad.category }}</p>
+    <p>Description: {{ ad.description }}</p>
+    <p>Image: {{ ad.main_image.url }}</p>
+    <p>Price: {{ ad.price }} {{ ad.currency }}</p>
+    <p>City: {{ ad.city }}</p>
+    <p>Phone number: {{ ad.phone_number }}</p>
+    <p>Hide phone number: {{ ad.hide_phone_number }}</p>
+    <p>email: {{ ad.email }}</p> 
+    {% for image in images %}
+        <img src="{{ image.image.url }}" id="{{ image.id }}" width="100px" height="100px"/>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+

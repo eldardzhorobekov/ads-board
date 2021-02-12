@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Мои объявления {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="ads">
+    {% for ad in ads %}
+        <div class="ad">
+            <div>ID: {{ ad.id }}</div>
+            <div>Description: {{ ad.description }}</div>
+            <div>Price: {{ ad.price }}{{ ad.currency }}</div>
+            <div>City: {{ ad.city }}</div>
+            <div>Images: {{ ad.images_count }}</div>
+            <a href="{% url 'ads:ads-edit' pk=ad.id %}">Редактировать</a>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
