@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
-
+* {
+    box-sizing: border-box;
+}
 p {
     margin: 0 0 10px 0;
 }
 body {
     font-family: 'Ubuntu', sans-serif;
-    white-space: nowrap;
 }
 .header {
     background: #fff;
@@ -32,17 +33,13 @@ body {
     display: flex;
     padding-left: 10px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 998px) {
     .container {
-        width: 768px;
+        width: 998px;
         margin: 0 auto;
     }
 }
 
-
-body {
-    background: #3498db;
-}
 .form-wrapper {
     width: 500px;
     position: absolute;
@@ -83,6 +80,7 @@ body {
 
 .main {
     background: #fff;
+    width: 100%;
 }
 
 .main-nav {

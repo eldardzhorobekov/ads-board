@@ -1,12 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Объявления{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/adv-styles.css' %}">
+{% endblock styles %}
 
 {% block content %}
 
 <div class="main-nav">
     <div class="container">
         {% include 'ads/_categories.html' %}
+    </div>
+</div>
+<div class="container">
+    <h1>Рекомендации</h1>
+    <div class="ad-blocks-container">
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
+        {% include 'ads/_ad-block-item.html' %}
     </div>
 </div>
 
