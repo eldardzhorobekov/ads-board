@@ -1,5 +1,7 @@
 from django.contrib import admin
-# from django.contrib.contenttypes.admin import GenericTabularInline
+
+from imagekit.admin import AdminThumbnail
+
 from mptt.admin import DraggableMPTTAdmin
 from ad.models import City, \
     Category, AdvertisementImage, Advertisement
@@ -9,6 +11,7 @@ class SubCategoryInline(admin.TabularInline):
     model = Category
     extra = 14
     exclude = ('icon', 'slug')
+
 
 class CategoryAdmin(DraggableMPTTAdmin):
     fieldsets = (
@@ -21,7 +24,7 @@ class AdvertisementImageInline(admin.TabularInline):
     model = AdvertisementImage
     extra = 3
     fieldsets = (
-        ('Основные поля', {'fields': ('id', 'image', 'is_main') }),
+        ('Основные поля', {'fields': ('id', 'image') }),
     )
 
     

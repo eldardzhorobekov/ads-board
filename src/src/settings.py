@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'mptt',
     'django_cleanup',
     'crispy_forms',
+    'imagekit',
 
     'user.apps.UserConfig',
     'ad.apps.AdConfig',

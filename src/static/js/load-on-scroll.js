@@ -2,8 +2,9 @@ $(document).ready(function() {
     
     function getNewAdListItem(image_src, price, title){
         const $newNode = $('.ad-list-item__wrapper').last().clone(true);
-
+        
         $newNode.find('.ad-list__item_pic img').attr('src', image_src);
+        $newNode.find('.ad-list__item_pic img').attr('alt', title);
         $newNode.find('.ad-ad-list__item__price').text(price);
         $newNode.find('.ad-ad-list__item__title').text(title);
 

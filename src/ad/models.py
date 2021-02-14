@@ -11,6 +11,8 @@ from django.db import transaction
 
 from mptt.models import MPTTModel, TreeForeignKey
 from phonenumber_field.modelfields import PhoneNumberField
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 from ad.helpers import slugify
 from ad.managers import AdvertisementManager
@@ -125,6 +127,10 @@ class Advertisement(models.Model):
 
 class AdvertisementImage(models.Model):
     image = models.ImageField(upload_to=upload_image_path, blank=False, null=False)
+    image_thumbnail = ImageSpecField(source='image',
+                                      processors=[ResizeToFill(220, 170)],
+                                      format='JPEG',
+                                      options={'quality': 90})
     is_main = models.BooleanField(default=False)
     advertisement = models.ForeignKey(Advertisement, on_delete=models.CASCADE, related_name="images")
 
