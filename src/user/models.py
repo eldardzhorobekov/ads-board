@@ -1,10 +1,11 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.core.exceptions import ValidationError
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-from django.core.exceptions import ValidationError
-from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.urls import reverse
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -88,3 +89,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def clean(self):
         if not self.email and not self.phone_number:
             raise ValidationError('You must provide either Email or Phone number')
+
+    def get_absolute_url(self):
+        return reverse('custom_user:details', kwargs={'pk':self.pk})
