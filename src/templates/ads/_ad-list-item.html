@@ -1,0 +1,25 @@
+{% load static %}
+<a href="#" class="ad-list-item__wrapper">
+    <div class="ad-list__item">
+        <header class="ad-list__item__header">
+            <picture class="ad-list__item_pic">
+                <img src="{% static 'images/example-ad-img.jpeg' %}" alt="{{title}}">
+            </picture>
+        </header>
+        <footer class="ad-list__item__footer">
+            <div class="ad-list__item__price"><span>3000 $</span></div>
+            <div class="ad-list__item__title"><span>Honda Odyssey 2.3 л. 1998 | 230000 км</span></div>
+            <div class="ad-list__item__tooltip">
+                <div class="ad-list__item__tooltip__user">
+                    <span><i class="fas fa-user"></i></span>
+                </div>
+                <div class="ad-list__item__tooltip__message">
+                    <span><i class="fas fa-envelope"></i></span>
+                </div>
+                <div class="ad-list__item__tooltip__like">
+                    <span><i class="fas fa-heart"></i></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</a>

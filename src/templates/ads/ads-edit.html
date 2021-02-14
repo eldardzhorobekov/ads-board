@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block title %} Редактировать объявление - {{ advertisement }}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -29,4 +33,9 @@
     </div>
 </div>
 
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{% static 'js/forms.js' %}"></script>
 {% endblock %}

@@ -1,34 +1,34 @@
-.ad-blocks-container {
+.ad-list-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
-.ad-block-item__wrapper {
+.ad-list-item__wrapper {
     flex-basis: 50%;
     width: 50%;
     text-decoration: none;
     display: flex;
     justify-content: center;
 }
-.ad-blocks__item {
+.ad-list__item {
     padding: 0 10px;
     overflow: hidden;
     width: 100%;
     max-width: 240px;
 }
 @media only screen and (min-width: 768px) {
-    .ad-block-item__wrapper {
+    .ad-list-item__wrapper {
         flex-basis: 33.33333%;
         width: 33.33333%;
     }
 }
 @media only screen and (min-width: 998px) {
-    .ad-block-item__wrapper {
+    .ad-list-item__wrapper {
         flex-basis: 25%;
         width: 25%;
     }
 }
-.ad-block__item__tooltip {
+.ad-list__item__tooltip {
     width: 100%;
     padding: 10px 0;
     display: flex;
@@ -36,19 +36,19 @@
     color: #ccc;
     font-size: 18px;
 }
-.ad-block__item__tooltip__user {
+.ad-list__item__tooltip__user {
     flex: 1;
 }
-.ad-block__item__tooltip__message {
+.ad-list__item__tooltip__message {
     margin-right: 5px;
 }
-.ad-block__item__tooltip__message:hover {
+.ad-list__item__tooltip__message:hover {
     color: #27ae60;
 }
-.ad-block__item__tooltip__like:hover {
+.ad-list__item__tooltip__like:hover {
     color: #e74c3c;
 }
-.ad-block__item_pic {
+.ad-list__item_pic {
     width: 100%;
     height: 170px;
     overflow:hidden;
@@ -56,26 +56,33 @@
     background: #000;
     display: block;
 }
-.ad-block__item_pic img {
+.ad-list__item_pic img {
     width: 100%;
     height: 100%;
 }
-.ad-block__item__footer {
+.ad-list__item__footer {
     margin-bottom: 25px;
 }
-.ad-block__item__price {
+.ad-list__item__price {
     color: #000;
     font-size: 22px;
     font-weight: bold;
     padding: 7px 0;
 }
-.ad-block__item__title {
+.ad-list__item__title {
     padding: 0 1px;
 }
-.ad-block__item__title span {
+.ad-list__item__title span {
     font-size: 15px;
     color: #3498db;
 }
-.ad-block-item__wrapper:hover .ad-block__item__title span {
+.ad-list-item__wrapper:hover .ad-list__item__title span {
     color: #333;
+}
+
+.ads-loading {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: gray;
 }
